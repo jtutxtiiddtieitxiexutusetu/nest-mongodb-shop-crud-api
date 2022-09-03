@@ -1,4 +1,4 @@
-## Introduction 
+## Introduction   
 
 This is the assessment Nest.js application that is packaged as a docker image.
 
