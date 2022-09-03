@@ -1,4 +1,4 @@
-## Introduction
+## Introduction 
 
 This is the assessment Nest.js application that is packaged as a docker image.
 
@@ -15,12 +15,20 @@ Then, it will exec bash inside of the Nest.js container , so you will get an int
 To start the app and see it for your self:
 
 ```bash
+# run this to get a bash inside the dev container:
 ./do_dev.sh ;
-# then when inside the dev container:
+
+# Install packages if you dont have them:
+yarn ;
+
+# To run tests:
+yarn test ;
+
+# To run the development server and watch for file changes:
 yarn start:dev ;
-# now you can develop your Nest.js app as you would do normally. By default it will listen on port 3000 and expose it on the host as well.
 ```
 
+By default it will listen on port 3000 and expose it on the host as well.  
 Open http://127.0.0.1:3000/api to see the swagger user interface.
 
 ## How to scale this?

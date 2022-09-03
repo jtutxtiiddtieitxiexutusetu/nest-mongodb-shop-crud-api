@@ -27,4 +27,8 @@ export class CartsService {
   async delete(id: string): Promise<any> {
     return await this.cartsModel.findByIdAndRemove(id).exec();
   }
+
+  async deleteAll(): Promise<any> {
+    return await this.cartsModel.deleteMany({}).exec();
+  }
 }

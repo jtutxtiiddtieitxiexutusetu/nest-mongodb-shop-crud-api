@@ -27,4 +27,8 @@ export class UsersService {
   async delete(id: string): Promise<any> {
     return await this.usersModel.findByIdAndRemove(id).exec();
   }
+
+  async deleteAll(): Promise<any> {
+    return await this.usersModel.deleteMany({}).exec();
+  }
 }

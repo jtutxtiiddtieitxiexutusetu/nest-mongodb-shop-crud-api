@@ -1,20 +1,23 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { composeAppModuleMetaData } from '../app.module';
 import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
+import { resetState } from '../../test/common';
 
 describe('ProductsController', () => {
-  let controller: ProductsController;
+  let module: TestingModule
+  let productsController: ProductsController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [ProductsController],
-      providers: [ProductsService],
-    }).compile();
-
-    controller = module.get<ProductsController>(ProductsController);
+    module = await Test.createTestingModule(composeAppModuleMetaData()).compile();
+    productsController = module.get<ProductsController>(ProductsController);
   });
 
+  afterEach(async () => {
+    await resetState(module)
+  })
+
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(productsController).toBeDefined();
   });
 });

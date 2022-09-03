@@ -1,18 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { resetState } from '../../test/common';
+import { composeAppModuleMetaData } from '../app.module';
 import { UsersService } from './users.service';
 
 describe('UsersService', () => {
-  let service: UsersService;
+  let module: TestingModule
+  let usersService: UsersService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [UsersService],
-    }).compile();
-
-    service = module.get<UsersService>(UsersService);
+    module = await Test.createTestingModule(composeAppModuleMetaData()).compile();
+    usersService = module.get<UsersService>(UsersService);
   });
 
+  afterEach(async () => {
+    await resetState(module)
+  })
+
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(usersService).toBeDefined();
   });
 });
