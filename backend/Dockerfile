@@ -21,7 +21,7 @@ ADD --chown=node:node source /app
 
 # for tests
 FROM modules_sources_image AS tests_image
-RUN apt update -y && apt install -y python3
+RUN ls -lah; echo "OK tests image is done";
 CMD ["bash", "-c", "while true ; do sleep 10 ; done ;"]
 
 # for build
